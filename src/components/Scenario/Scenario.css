@@ -91,6 +91,7 @@
     border-top: none;
     border-radius: 0 0 8px 8px;
     background-color: #ffffff;
+    flex-wrap: wrap;
 }
 
 .scenario__expanded-image {

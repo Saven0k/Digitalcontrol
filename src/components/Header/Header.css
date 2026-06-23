@@ -2,14 +2,15 @@
     height: 111px;
     display: flex;
     align-items: start;
-    justify-content: end;
+    overflow: hidden;
+    padding-left: 120px;
+    background-color: #E65907;
 }
 
 .header__brand {
     width: 100%;
     height: 100%;
-    background-color: #E65907;
-    padding-left: 157px;
     display: flex;
     align-items: center;
+    min-width: 472px;
 }

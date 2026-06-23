@@ -6,7 +6,7 @@ import howArrow from "../../assets/images/how-arrow.svg"
 
 const HowItWorks = () => {
     return (
-        <section className="how">
+        <section id="how-it-works" className="how">
             <h2 className="how__title">КАК ЭТО РАБОТАЕТ?</h2>
             <h3 className="how__subtitle">Искусственный интеллект в режиме 24/7 анализирует видеопоток с мест производства работ.
                 Система предупредит вас, как только будет обнаружена потенциально опасная ситуация.</h3>

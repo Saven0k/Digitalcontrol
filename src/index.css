@@ -12,3 +12,13 @@
     font-family: 'GPN Din', sans-serif;
     color: #45556E;
 }
+
+
+a {
+    text-decoration: none;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
