@@ -14,3 +14,105 @@
     align-items: center;
     min-width: 472px;
 }
+
+
+@media (max-width: 1440px) {
+    .header {
+        align-items: stretch;
+        /* 👈 ключ: одинаковая высота детей */
+    }
+
+    .header__brand {
+        width: auto;
+        /* 👈 убираем 100% */
+        min-width: 420px;
+        height: 100%;
+        flex-shrink: 0;
+    }
+
+    .header__accent-line {
+        height: 100%;
+        flex-grow: 1;
+        object-fit: cover;
+
+        transform: scaleY(1.2);
+        transform-origin: center;
+    }
+
+    .header__logo-image {
+        width: 350px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header {
+        padding-left: 40px;
+        height: 90px;
+    }
+
+    .header__brand {
+        width: auto;
+        min-width: 360px;
+        height: 100%;
+        flex-shrink: 0;
+    }
+
+    .header__accent-line {
+        transform: scaleY(1.25);
+    }
+
+    .header__logo-image {
+        width: 300px;
+    }
+}
+
+@media (max-width: 900px) {
+    .header {
+        padding-left: 20px;
+        height: 80px;
+    }
+
+    .header__brand {
+        min-width: unset;
+        width: auto;
+        height: 100%;
+    }
+
+    .header__accent-line {
+        transform: scaleY(1.3);
+    }
+
+    .header__logo-image {
+        width: 250px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        height: 70px;
+        padding-left: 16px;
+    }
+
+    .header__accent-line {
+        transform: scaleY(1.35);
+    }
+
+    .header__logo-image {
+        width: 200px;
+    }
+}
+
+@media (max-width: 420px) {
+    .header {
+        height: 64px;
+    }
+
+    .header__accent-line {
+        transform: scaleY(1.4);
+    }
+
+    .header__logo-image {
+        width: 120px;
+    }
+}

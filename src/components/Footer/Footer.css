@@ -20,6 +20,7 @@
 }
 
 .footer__content {
+    max-width: 617px;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -39,4 +40,154 @@
     font-weight: 400;
     font-size: 30px;
     color: #FFFFFF;
+}
+@media (max-width: 1440px) {
+    .footer__block {
+        gap: 200px;
+        padding-right: 160px;
+    }
+
+    .footer__title {
+        font-size: 54px;
+    }
+
+    .footer__subtitle {
+        font-size: 28px;
+    }
+
+    .footer__image {
+        width: 420px;
+        height: auto;
+    }
+
+    .footer__content {
+        max-width: 640px;
+    }
+}
+@media (max-width: 1200px) {
+    .footer__block {
+        gap: 120px;
+        padding-right: 120px;
+    }
+
+    .footer__title {
+        font-size: 48px;
+    }
+
+    .footer__subtitle {
+        font-size: 26px;
+    }
+
+    .footer__image {
+        width: 380px;
+        height: auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    .footer__block {
+        gap: 140px;
+        padding-right: 80px;
+        padding-top: 60px;
+    }
+
+    .footer__title {
+        font-size: 34px;
+    }
+
+    .footer__subtitle {
+        font-size: 22px;
+    }
+
+    .footer__image {
+        width: 320px;
+    }
+
+    .footer__content {
+        max-width: 520px;
+        gap: 22px;
+    }
+}
+
+@media (max-width: 900px) {
+    .footer__block {
+        position: relative;
+        padding-right: 20px;
+        overflow: hidden;
+        padding-top: 20px;
+        justify-content: end;
+    }
+
+    .footer__content {
+        position: relative;
+        z-index: 2;
+        gap: 20px;
+        padding-bottom: 120px;
+    }
+
+    .footer__image {
+        position: absolute;
+
+        width: 260px;
+        height: auto;
+
+        bottom: -40px;
+        left: -60px;
+        z-index: 1;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+
+
+    .footer__block {
+        padding-right: 0;
+        padding-left: 16px;
+        gap: 20px;
+    }
+
+    .footer__title {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    .footer__subtitle {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    .footer__content {
+        padding-bottom: 100px;
+    }
+
+    .footer__image {
+        width: 200px;
+        bottom: -75px;
+        left: -35px;
+    }
+}
+
+@media (max-width: 420px) {
+    .footer__title {
+        font-size: 20px;
+    }
+
+    .footer__subtitle {
+        font-size: 16px;
+    }
+
+    .footer__block {
+        gap: 20px;
+    }
+
+    .footer__image {
+        width: 160px;
+        bottom: -60px;
+        right: -80px;
+    }
+
+    .footer__content {
+        padding-bottom: 90px;
+    }
 }

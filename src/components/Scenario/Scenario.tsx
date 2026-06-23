@@ -8,7 +8,7 @@ interface ScenarioProps {
     category: string;
     title: string;
     image: string;
-    notlification: string; // ← меняем notification на notlification
+    notlification: string;
     cause: string;
     isOpen: boolean;
     onToggle: (id: number) => void;

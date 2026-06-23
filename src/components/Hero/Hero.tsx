@@ -7,9 +7,7 @@ const Hero = () => {
         <section className="hero">
             <div className="hero__content">
                 <h1 className="hero__title">
-                    Умная камера
-                    <span className="hero__title-accent"> поможет вам </span>
-                    в работе
+                    Умная камера <span className="hero__title-accent"> поможет вам </span> в работе
                 </h1>
                 <p className="hero__description">
                     На объектах появился новый помощник — системы видеоаналитики производства работ, использующие технологии искусственного интеллекта. Их цель — повысить вашу безопасность.
