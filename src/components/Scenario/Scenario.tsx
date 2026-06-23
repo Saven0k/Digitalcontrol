@@ -34,7 +34,6 @@ const Scenario = ({ id, category, title, image, notlification, cause, isOpen, on
         e.stopPropagation();
         onToggle(id);
     };
-    console.log(image)
 
     return (
         <div key={id} className={`scenario ${isOpen ? "scenario--open" : ""}`}>
