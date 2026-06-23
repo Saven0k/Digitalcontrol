@@ -2,6 +2,7 @@
   "name": "digitalcontrol",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://saven0k.github.io/Digitalcontrol",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,7 +17,6 @@
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.17.0"
   },
-  "homepage": "https://saven0k.github.io/Digitalcontrol",
   "devDependencies": {
     "@babel/core": "^7.29.0",
     "@eslint/js": "^10.0.1",
