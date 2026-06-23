@@ -95,10 +95,12 @@
 }
 
 .scenario__expanded-image {
-    width: 682px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px;
     flex-shrink: 0;
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    max-width: 520px;
 }
 
 .scenario__expanded-side {
@@ -182,12 +184,6 @@
 
 
 
-
-
-
-
-
-
 @media (max-width: 1400px) {
     .scenario {
         padding-right: 0;
@@ -195,7 +191,7 @@
 
     .scenario__expanded-image {
         width: 100%;
-        max-width: 650px;
+        max-width: 460px;
     }
 }
 
@@ -224,8 +220,8 @@
     }
 
     .scenario__expanded-image {
-        width: 100%;
         max-width: 100%;
+        width: 100%;
     }
 
     .scenario__expanded-side {
