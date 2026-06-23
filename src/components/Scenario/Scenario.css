@@ -1,0 +1,180 @@
+.scenario {
+    padding-right: 120px;
+    margin-bottom: 16px;
+}
+
+.scenario__card {
+    padding: 36px 60px 37px 32px;
+    border: 2px solid #EDEEF0;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+    background-color: #ffffff;
+}
+
+.scenario__card:hover {
+    border-color: #00A0DC;
+    background-color: #FAFCFE;
+}
+
+.scenario--open .scenario__card {
+    border-color: #00A0DC;
+    border-radius: 8px 8px 0 0;
+    background-color: #FAFCFE;
+}
+
+.scenario__badge {
+    margin-right: 69px;
+    font-weight: 400;
+    font-size: 22px;
+    color: #00A0DC;
+    background-color: #DAEDFF;
+    border-radius: 6px;
+    padding: 7px 27px;
+    min-width: 138px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.scenario__badge--drilling {
+    background-color: #DAEDFF;
+    color: #00A0DC;
+}
+
+.scenario__badge--tkrs {
+    background-color: #FCEEE6;
+    color: #E65907;
+}
+
+.scenario__badge--transport {
+    background-color: #FFF8E1;
+    color: #EDB500;
+}
+
+.scenario__title {
+    margin-right: auto;
+    font-weight: 700;
+    font-size: 24px;
+    color: #45556E;
+    cursor: pointer;
+}
+
+.scenario__toggle-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.scenario__toggle-btn:hover {
+    background-color: #F5F5FA;
+}
+
+.scenario__toggle-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.scenario__expanded-content {
+    padding: 43px 34px;
+    display: flex;
+    gap: 37px;
+    align-items: start;
+    border: 2px solid #00A0DC;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    background-color: #ffffff;
+}
+
+.scenario__expanded-image {
+    width: 682px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.scenario__expanded-side {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    flex: 1;
+}
+
+.scenario__notification {
+    background-color: #FEF2F2;
+    padding: 19px 30px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.scenario__notification-icon-wrapper {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #F22922;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.scenario__notification-icon {
+    width: 38px;
+    height: 32px;
+}
+
+.scenario__notification-text {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    flex: 1;
+}
+
+.scenario__notification-title {
+    font-size: 24px;
+    line-height: 120%;
+    color: #F22922;
+    font-weight: 700;
+}
+
+.scenario__notification-subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    color: #45556E;
+}
+
+.scenario__cause {
+    background-color: #fff;
+    box-shadow: 0px 0px 5px 0px #00000040;
+    padding: 31px 30px;
+    border-radius: 8px;
+}
+
+.scenario__cause-text {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.scenario__cause-title {
+    color: #00A0DC;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 120%;
+}
+
+.scenario__cause-subtitle {
+    font-size: 24px;
+    color: #45556E;
+    line-height: 1.4;
+}

@@ -1,0 +1,42 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.footer__block {
+    padding-top: 125px;
+    display: flex;
+    background-color: #E65907;
+    gap: 250px;
+    padding-right: 711px;
+    padding-bottom: 52px;
+}
+
+.footer__image {
+    margin-top: 15px;
+    width: 448px;
+    height: 364px;
+}
+
+.footer__content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 28px;
+    padding-bottom: 73px;
+}
+
+.footer__title {
+    padding-right: 93px;
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 120%;
+    color: #FFFFFF;
+}
+
+.footer__subtitle {
+    font-weight: 400;
+    font-size: 30px;
+    color: #FFFFFF;
+}

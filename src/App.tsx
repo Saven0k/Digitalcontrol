@@ -1,19 +1,23 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Header from "./components/Header/Header"
-import Footer from "./components/Footer/Footer"
-import MainPage from "./pages/MainPage"
+import Banner from './components/Banner/Banner';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Hero from './components/Hero/Hero';
+import HowItWorks from './components/HowItWorks/HowItWorks';
+import Scenarios from './components/Scenarios/Scenarios';
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className="app">
       <Header />
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="*" element={<MainPage />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
-  )
+      <main>
+        <Hero />
+        <Scenarios />
+        <HowItWorks />
+        <Banner />
+        <Footer />
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
