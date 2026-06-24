@@ -8,9 +8,9 @@ const Scenarios = () => {
     const [openScenarioId, setOpenScenarioId] = useState<number | null>(null);
 
     const filters = [
-        { id: 0, label: "Все сценарии", count: 32 },
-        { id: 1, label: "Бурение", count: 18 },
-        { id: 2, label: "ТКРС", count: 14 }
+        { id: 0, label: "Все сценарии", count: drillingData.length + tkrsData.length },
+        { id: 1, label: "Бурение", count: drillingData.length },
+        { id: 2, label: "ТКРС", count: tkrsData.length },
     ];
 
     const getCurrentData = () => {
