@@ -19,7 +19,6 @@
 @media (max-width: 1440px) {
     .header {
         align-items: stretch;
-        /* 👈 ключ: одинаковая высота детей */
     }
 
     .header__brand {

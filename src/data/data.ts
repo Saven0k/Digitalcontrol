@@ -1,4 +1,3 @@
-// Импорт всех изображений для drillingCards
 import drillingCart1 from "../assets/images/drillingCards/cart1.png";
 import drillingCart2 from "../assets/images/drillingCards/cart2.png";
 import drillingCart3 from "../assets/images/drillingCards/cart3.png";
@@ -18,7 +17,6 @@ import drillingCart16 from "../assets/images/drillingCards/cart16.png";
 import drillingCart17 from "../assets/images/drillingCards/cart17.png";
 import drillingCart18 from "../assets/images/drillingCards/cart18.png";
 
-// Импорт всех изображений для tkrsCards
 import tkrsCart1 from "../assets/images/TkrsCards/cart1.png";
 import tkrsCart2 from "../assets/images/TkrsCards/cart2.png";
 import tkrsCart3 from "../assets/images/TkrsCards/cart3.png";

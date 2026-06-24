@@ -39,10 +39,8 @@ const Scenario = ({ id, category, title, image, notlification, cause, isOpen, on
         onToggle(id);
     };
 
-    // Прокрутка к открытой карточке
     useEffect(() => {
         if (isOpen && scenarioRef.current) {
-            // Даём время на рендеринг контента
             setTimeout(() => {
                 const header = document.querySelector('.header') as HTMLElement;
                 const headerHeight = header?.offsetHeight || 0;

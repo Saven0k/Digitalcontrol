@@ -34,7 +34,6 @@ const Scenarios = () => {
     const handleFilterClick = (id: number) => {
         setActiveId(id);
         setOpenScenarioId(null);
-        // Прокрутка к началу списка
         setTimeout(() => {
             const scenariosList = document.querySelector('.scenarios__list');
             if (scenariosList) {

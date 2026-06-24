@@ -79,7 +79,6 @@
 
 .how__list-card__arrow {
     height: auto;
-    /* margin-top: clamp(40px, 6vw, 124px); */
 }
 
 @media (max-width: 1400px) {

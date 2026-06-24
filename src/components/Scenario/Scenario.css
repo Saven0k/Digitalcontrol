@@ -189,17 +189,12 @@
     line-height: 1.4;
 }
 
-
-
 @media (max-width: 1400px) {
-
-
     .scenario__expanded-image {
         max-width: 680px;
         min-width: 340px;
     }
 }
-
 
 @media (max-width: 1024px) {
     .scenario {
