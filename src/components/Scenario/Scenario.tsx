@@ -2,6 +2,7 @@ import "./Scenario.css";
 import arrowUp from "../../assets/images/arrow-up.svg";
 import arrowDown from "../../assets/images/arrow-down.svg";
 import notificationIcon from "../../assets/images/notlification-icon.svg";
+import { useEffect, useRef } from "react";
 
 interface ScenarioProps {
     id: number;
@@ -15,6 +16,8 @@ interface ScenarioProps {
 }
 
 const Scenario = ({ id, category, title, image, notlification, cause, isOpen, onToggle }: ScenarioProps) => {
+    const scenarioRef = useRef<HTMLDivElement>(null);
+
     const getCategoryClass = (category: string) => {
         switch (category) {
             case "Бурение":
@@ -25,6 +28,7 @@ const Scenario = ({ id, category, title, image, notlification, cause, isOpen, on
                 return "";
         }
     };
+    
 
     const handleCardClick = () => {
         onToggle(id);
@@ -35,8 +39,34 @@ const Scenario = ({ id, category, title, image, notlification, cause, isOpen, on
         onToggle(id);
     };
 
+    // Прокрутка к открытой карточке
+    useEffect(() => {
+        if (isOpen && scenarioRef.current) {
+            // Даём время на рендеринг контента
+            setTimeout(() => {
+                const header = document.querySelector('.header') as HTMLElement;
+                const headerHeight = header?.offsetHeight || 0;
+                const element = scenarioRef.current;
+                
+                if (element) {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 150);
+        }
+    }, [isOpen]);
+
     return (
-        <div key={id} className={`scenario ${isOpen ? "scenario--open" : ""}`}>
+        <div 
+            ref={scenarioRef}
+            key={id} 
+            className={`scenario ${isOpen ? "scenario--open" : ""}`}
+        >
             <div 
                 className="scenario__card" 
                 onClick={handleCardClick}
@@ -84,7 +114,7 @@ const Scenario = ({ id, category, title, image, notlification, cause, isOpen, on
                             </div>
                             <div className="scenario__notification-text">
                                 <span className="scenario__notification-title">Голосовое оповещение</span>
-                                <p className="scenario__notification-subtitle">{notlification}</p> {/* ← используем notlification */}
+                                <p className="scenario__notification-subtitle">{notlification}</p>
                             </div>
                         </div>
                         <div className="scenario__cause">

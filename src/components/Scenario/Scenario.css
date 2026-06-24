@@ -192,9 +192,7 @@
 
 
 @media (max-width: 1400px) {
-    .scenario {
-        padding-right: 0;
-    }
+
 
     .scenario__expanded-image {
         max-width: 680px;
@@ -204,6 +202,10 @@
 
 
 @media (max-width: 1024px) {
+    .scenario {
+        padding-right: 0;
+    }
+
     .scenario__card {
         padding: 24px;
         gap: 20px;

@@ -8,9 +8,9 @@ const Scenarios = () => {
     const [openScenarioId, setOpenScenarioId] = useState<number | null>(null);
 
     const filters = [
-        { id: 0, label: "Все сценарии", count: 35 },
-        { id: 1, label: "Бурение", count: 12 },
-        { id: 2, label: "ТКРС", count: 8 }
+        { id: 0, label: "Все сценарии", count: 32 },
+        { id: 1, label: "Бурение", count: 18 },
+        { id: 2, label: "ТКРС", count: 14 }
     ];
 
     const getCurrentData = () => {
@@ -31,6 +31,26 @@ const Scenarios = () => {
         setOpenScenarioId(prevId => prevId === id ? null : id);
     };
 
+    const handleFilterClick = (id: number) => {
+        setActiveId(id);
+        setOpenScenarioId(null);
+        // Прокрутка к началу списка
+        setTimeout(() => {
+            const scenariosList = document.querySelector('.scenarios__list');
+            if (scenariosList) {
+                const header = document.querySelector('.header') as HTMLElement;
+                const headerHeight = header?.offsetHeight || 0;
+                const elementPosition = scenariosList.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 100);
+    };
+
     return (
         <section className="scenarios">
             <h2 className="scenarios__title">Сценарии видеоаналитики</h2>
@@ -42,10 +62,7 @@ const Scenarios = () => {
                 {filters.map((filter) => (
                     <button
                         key={filter.id}
-                        onClick={() => {
-                            setActiveId(filter.id);
-                            setOpenScenarioId(null);
-                        }}
+                        onClick={() => handleFilterClick(filter.id)}
                         className={`scenarios__filter-btn ${
                             activeId === filter.id ? "scenarios__filter-btn--active" : ""
                         }`}
@@ -71,7 +88,7 @@ const Scenarios = () => {
             <div className="scenarios__list" role="tabpanel">
                 {currentData.map((scenario) => (
                     <Scenario 
-                        key={scenario.id} // ← добавлен key
+                        key={scenario.id}
                         {...scenario} 
                         isOpen={openScenarioId === scenario.id}
                         onToggle={handleScenarioToggle}

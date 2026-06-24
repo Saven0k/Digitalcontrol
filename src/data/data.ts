@@ -190,7 +190,7 @@ export const drillingData: ScenarioData[] = [
     }
 ];
 
-export const tkrsData: ScenarioData[] = [
+export const tkrsDataBase: ScenarioData[] = [
     {
         id: 1,
         category: "ТКРС",
@@ -304,3 +304,8 @@ export const tkrsData: ScenarioData[] = [
         cause: "Проведение спуско-подъёмных операций при закрытом или неполностью открытом превенторе"
     }
 ];
+
+export const tkrsData: ScenarioData[] = tkrsDataBase.map(item => ({
+    ...item,
+    id: item.id + 20
+}));
