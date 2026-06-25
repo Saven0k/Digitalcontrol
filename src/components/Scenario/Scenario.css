@@ -4,7 +4,7 @@
 }
 
 .scenario__card {
-    padding: 36px 60px 37px 32px;
+    padding: 26px 60px 26px 32px;
     border: 2px solid #EDEEF0;
     display: flex;
     align-items: center;
@@ -189,10 +189,23 @@
     line-height: 1.4;
 }
 
-@media (max-width: 1400px) {
+@media (max-width: 1441px) {
     .scenario__expanded-image {
         max-width: 680px;
         min-width: 340px;
+    }
+
+    .scenario__card {
+        padding: 12px 60px 12px 18px;
+    }
+
+    .scenario__badge {
+        padding: 6px 12px;
+        font-size: 18px;
+        margin-right: 40px;
+    }
+    .scenario__title {
+        font-size: 20px;
     }
 }
 
