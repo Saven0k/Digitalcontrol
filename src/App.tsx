@@ -7,16 +7,17 @@ import Scenarios from './components/Scenarios/Scenarios';
 
 function App() {
   return (
-    <div className="app">
+    <>
+      <a className="skip-link" href="#main">Перейти к содержимому</a>
       <Header />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
         <Scenarios />
         <HowItWorks />
         <Banner />
-        <Footer />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
 

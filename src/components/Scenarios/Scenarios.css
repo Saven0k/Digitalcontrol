@@ -1,196 +1,136 @@
 .scenarios {
-    padding-left: 121px;
-    margin-bottom: 40px;
-    margin-top: 40px;
+  padding-block: clamp(48px, 6vw, 80px);
 }
 
-.scenarios__title {
-    font-weight: 700;
-    font-size: 35px;
-    line-height: 120%;
-    color: #45556E;
-    margin-bottom: 20px;
+.scenarios__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
 }
 
-.scenarios__subtitle {
-    display: block;
-    font-weight: 400;
-    font-size: 22px;
-    color: #45556E;
-    margin-bottom: 24px;
+.scenarios__total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  color: var(--color-muted);
+  font-size: 16px;
 }
 
-.scenarios__filter-list {
-    display: flex;
-    border: 2px solid #EDEEF0;
-    border-radius: 8px;
-    max-width: 1162px;
-    align-items: center;
-    margin-bottom: 35px;
+.scenarios__total strong {
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.04em;
+  color: var(--color-blue);
 }
 
-.scenarios__filter-btn {
-    width: 25%;
-    font-weight: 400;
-    font-size: 18px;
-    background-color: #fff;
-    border: none;
-    display: flex;
-    padding: 14px 20px;
-    gap: 22px;
-    align-items: center;
-    border-radius: 8px;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.scenarios__filters {
+  display: flex;
+  gap: 8px;
+  margin-top: 36px;
+  padding: 6px;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-surface);
 }
 
-.scenarios__filter-btn--active {
-    background-color: #00A0DC;
-    color: #FFFFFF;
+.scenarios__filter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 48px;
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 17px;
+  transition: background-color .2s;
 }
 
-.scenarios__filter-count {
-    width: 37px;
-    height: 28px;
-    border-radius: 23px;
-    padding: 4px 10px;
-    color: #45556E;
-    background-color: #F5F5FA;
-    text-align: center;
-    font-size: 16px;
+.scenarios__filter:hover {
+  background: #e5edf2;
 }
 
-.scenarios__filter-count--active {
-    color: #ffffff;
-    background-color: #29B5E4;
+.scenarios__filter[aria-pressed='true'] {
+  background: var(--color-blue);
+  color: #fff;
 }
 
-.scenarios__current-category {
-    margin-bottom: 25px;
-    font-size: 18px;
-    display: block;
-    font-weight: 500;
-    color: #45556E;
+.scenarios__count {
+  display: grid;
+  place-items: center;
+  min-width: 30px;
+  height: 26px;
+  padding-inline: 7px;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--color-muted);
+}
+
+.scenarios__filter[aria-pressed='true'] .scenarios__count {
+  background: #ffffff24;
+  color: #fff;
+}
+
+.scenarios__list-heading {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 28px 16px;
+  font-size: 15px;
+  color: var(--color-muted);
+}
+
+.scenarios__list-heading p {
+  color: var(--color-text);
 }
 
 .scenarios__list {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .scenarios__heading {
+    align-items: flex-start;
+  }
+  .scenarios__total {
+    display: none;
+  }
+  .scenarios__filters {
+    width: 100%;
     gap: 4px;
+  }
+  .scenarios__filter {
+    flex: 1;
+    gap: 8px;
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+  .scenarios__count {
+    min-width: 24px;
+    font-size: 12px;
+    padding-inline: 4px;
+  }
+  .scenarios__list-heading {
+    font-size: 14px;
+  }
 }
 
-@media (max-width: 1441px) {
-
-    .scenarios {
-        padding: 0 24px;
-        margin-top: 35px;
-    }
-
-    .scenarios__title {
-        font-size: 40px;
-        margin-bottom: 20px;
-    }
-
-
-    .scenarios__subtitle {
-        margin-bottom: 30px;
-    }
-
-    .scenarios__filter-list {
-        margin-bottom: 25px;
-    }
-
-    .scenarios__filter-btn {
-        padding: 12px 18px;
-        font-size: 18px;
-    }
-    .scenarios__current-category {
-        margin-bottom: 30px;
-    }
-}
-
-
-@media (max-width: 1024px) {
-    .scenarios {
-        padding: 0 24px;
-        margin-top: 30px;
-    }
-
-    .scenarios__filter-btn {
-        font-size: 18px;
-        flex: 1 1 calc(50% - 1px);
-    }
-
-    .scenarios__title {
-        font-size: 45px;
-    }
-
-    .scenarios__subtitle {
-        margin-bottom: 22px;
-    }
-}
-
-@media (max-width: 768px) {
-    .scenarios {
-        padding: 0 16px;
-    }
-
-    .scenarios__title {
-        margin-bottom: 12px;
-    }
-
-    .scenarios__subtitle {
-        margin-bottom: 24px;
-        line-height: 1.4;
-    }
-
-    .scenarios__filter-list {
-        flex-direction: column;
-    }
-
-    .scenarios__filter-btn {
-        width: 100%;
-        flex: unset;
-        justify-content: space-between;
-        font-size: 16px;
-        min-height: 60px;
-        padding: 14px 16px;
-    }
-
-    .scenarios__current-category {
-        margin-bottom: 20px;
-        font-size: 18px;
-    }
-
-    .scenarios__list {
-        gap: 12px;
-    }
-}
-
-@media (max-width: 480px) {
-
-    .scenarios {
-        margin-top: 0;
-        padding: 0 12px;
-    }
-
-    .scenarios__title {
-        font-size: 28px;
-    }
-
-    .scenarios__subtitle {
-        font-size: 15px;
-    }
-
-    .scenarios__filter-btn {
-        font-size: 15px;
-        gap: 8px;
-    }
-
-    .scenarios__filter-count {
-        font-size: 12px;
-        min-width: 32px;
-        height: 24px;
-    }
+@media (max-width: 360px) {
+  .scenarios__filters {
+    flex-direction: column;
+  }
+  .scenarios__filter {
+    justify-content: space-between;
+    padding-inline: 16px;
+  }
 }

@@ -1,101 +1,66 @@
-import { useState } from "react";
-import "./Scenarios.css";
-import Scenario from "../Scenario/Scenario";
-import { drillingData, tkrsData } from "../../data/data";
+import { useState } from 'react';
+import { drillingData, tkrsData } from '../../data/data';
+import Scenario from '../Scenario/Scenario';
+import './Scenarios.css';
 
-const Scenarios = () => {
-    const [activeId, setActiveId] = useState(0);
-    const [openScenarioId, setOpenScenarioId] = useState<number | null>(null);
+const groups = [
+  { id: 'all', label: 'Все сценарии', data: [...drillingData, ...tkrsData] },
+  { id: 'drilling', label: 'Бурение', data: drillingData },
+  { id: 'tkrs', label: 'ТКРС', data: tkrsData },
+] as const;
 
-    const filters = [
-        { id: 0, label: "Все сценарии", count: drillingData.length + tkrsData.length },
-        { id: 1, label: "Бурение", count: drillingData.length },
-        { id: 2, label: "ТКРС", count: tkrsData.length },
-    ];
+type GroupId = (typeof groups)[number]['id'];
 
-    const getCurrentData = () => {
-        switch (activeId) {
-            case 1:
-                return drillingData;
-            case 2:
-                return tkrsData;
-            default:
-                return [...drillingData, ...tkrsData];
-        }
-    };
+function Scenarios() {
+  const [activeId, setActiveId] = useState<GroupId>('all');
+  const [openScenarioId, setOpenScenarioId] = useState<number | null>(null);
+  const activeGroup = groups.find(group => group.id === activeId) ?? groups[0];
 
-    const currentData = getCurrentData();
-    const activeFilter = filters.find(f => f.id === activeId);
+  function selectGroup(id: GroupId) {
+    if (id === activeId) return;
+    setActiveId(id);
+    setOpenScenarioId(null);
+  }
 
-    const handleScenarioToggle = (id: number) => {
-        setOpenScenarioId(prevId => prevId === id ? null : id);
-    };
+  function toggleScenario(id: number) {
+    setOpenScenarioId(previous => previous === id ? null : id);
+  }
 
-    const handleFilterClick = (id: number) => {
-        setActiveId(id);
-        setOpenScenarioId(null);
-        setTimeout(() => {
-            const scenariosList = document.querySelector('.scenarios__list');
-            if (scenariosList) {
-                const header = document.querySelector('.header') as HTMLElement;
-                const headerHeight = header?.offsetHeight || 0;
-                const elementPosition = scenariosList.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
-                
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }, 100);
-    };
-
-    return (
-        <section className="scenarios">
-            <h2 className="scenarios__title">Сценарии видеоаналитики</h2>
-            <span className="scenarios__subtitle">
-                Потенциально опасные ситуации, на которые реагирует система.
-            </span>
-
-            <div className="scenarios__filter-list" role="tablist">
-                {filters.map((filter) => (
-                    <button
-                        key={filter.id}
-                        onClick={() => handleFilterClick(filter.id)}
-                        className={`scenarios__filter-btn ${
-                            activeId === filter.id ? "scenarios__filter-btn--active" : ""
-                        }`}
-                        role="tab"
-                        aria-selected={activeId === filter.id}
-                    >
-                        {filter.label}
-                        <span
-                            className={`scenarios__filter-count ${
-                                activeId === filter.id ? "scenarios__filter-count--active" : ""
-                            }`}
-                        >
-                            {filter.count}
-                        </span>
-                    </button>
-                ))}
-            </div>
-
-            <span className="scenarios__current-category">
-                {activeFilter?.label} ({activeFilter?.count})
-            </span>
-
-            <div className="scenarios__list" role="tabpanel">
-                {currentData.map((scenario) => (
-                    <Scenario 
-                        key={scenario.id}
-                        {...scenario} 
-                        isOpen={openScenarioId === scenario.id}
-                        onToggle={handleScenarioToggle}
-                    />
-                ))}
-            </div>
-        </section>
-    );
-};
+  return (
+    <section id="scenarios" className="scenarios container" aria-labelledby="scenarios-title">
+      <div className="scenarios__heading">
+        <div>
+          <span className="eyebrow">Знать, чтобы предупредить</span>
+          <h2 id="scenarios-title" className="section-title">Сценарии видеоаналитики</h2>
+          <p className="section-description">Узнайте, какие ситуации распознаёт система и почему срабатывает предупреждение.</p>
+        </div>
+        <span className="scenarios__total"><strong>{groups[0].data.length}</strong> сценария</span>
+      </div>
+      <div className="scenarios__filters" role="group" aria-label="Фильтр по направлению работ">
+        {groups.map(group => (
+          <button
+            key={group.id}
+            type="button"
+            className="scenarios__filter"
+            aria-pressed={activeId === group.id}
+            aria-controls="scenarios-list"
+            onClick={() => selectGroup(group.id)}
+          >
+            {group.label}<span className="scenarios__count">{group.data.length}</span>
+          </button>
+        ))}
+      </div>
+      <div className="scenarios__list-heading">
+        <p aria-live="polite" aria-atomic="true">{activeGroup.label} · {activeGroup.data.length}</p>
+        <span>Выберите сценарий, чтобы узнать подробности</span>
+      </div>
+      <div id="scenarios-list" className="scenarios__list">
+        {activeGroup.data.map(scenario => (
+          <Scenario key={scenario.id} scenario={scenario} isOpen={openScenarioId === scenario.id} onToggle={toggleScenario} />
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export default Scenarios;

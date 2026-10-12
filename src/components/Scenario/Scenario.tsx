@@ -1,131 +1,65 @@
-import "./Scenario.css";
-import arrowUp from "../../assets/images/arrow-up.svg";
-import arrowDown from "../../assets/images/arrow-down.svg";
-import notificationIcon from "../../assets/images/notlification-icon.svg";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
+import type { ScenarioData } from '../../types/scenario';
+import notificationIcon from '../../assets/images/notification-icon.svg';
+import './Scenario.css';
 
 interface ScenarioProps {
-    id: number;
-    category: string;
-    title: string;
-    image: string;
-    notlification: string;
-    cause: string;
-    isOpen: boolean;
-    onToggle: (id: number) => void;
+  scenario: ScenarioData;
+  isOpen: boolean;
+  onToggle: (id: number) => void;
 }
 
-const Scenario = ({ id, category, title, image, notlification, cause, isOpen, onToggle }: ScenarioProps) => {
-    const scenarioRef = useRef<HTMLDivElement>(null);
+function Scenario({ scenario, isOpen, onToggle }: ScenarioProps) {
+  const { id, category, title, image, notification, cause } = scenario;
+  const scenarioRef = useRef<HTMLElement>(null);
+  const triggerId = `scenario-trigger-${id}`;
+  const panelId = `scenario-panel-${id}`;
 
-    const getCategoryClass = (category: string) => {
-        switch (category) {
-            case "Бурение":
-                return "scenario__badge--drilling";
-            case "ТКРС":
-                return "scenario__badge--tkrs";
-            default:
-                return "";
-        }
-    };
-    
+  useEffect(() => {
+    if (isOpen) scenarioRef.current?.scrollIntoView({ block: 'start' });
+  }, [isOpen]);
 
-    const handleCardClick = () => {
-        onToggle(id);
-    };
-
-    const handleButtonClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        onToggle(id);
-    };
-
-    useEffect(() => {
-        if (isOpen && scenarioRef.current) {
-            setTimeout(() => {
-                const header = document.querySelector('.header') as HTMLElement;
-                const headerHeight = header?.offsetHeight || 0;
-                const element = scenarioRef.current;
-                
-                if (element) {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 150);
-        }
-    }, [isOpen]);
-
-    return (
-        <div 
-            ref={scenarioRef}
-            key={id} 
-            className={`scenario ${isOpen ? "scenario--open" : ""}`}
+  return (
+    <article ref={scenarioRef} className={`scenario${isOpen ? ' scenario--open' : ''}`}>
+      <h3>
+        <button
+          id={triggerId}
+          type="button"
+          className="scenario__trigger"
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          onClick={() => onToggle(id)}
         >
-            <div 
-                className="scenario__card" 
-                onClick={handleCardClick}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        onToggle(id);
-                    }
-                }}
-                aria-expanded={isOpen}
-            >
-                <span className={`scenario__badge ${getCategoryClass(category)}`}>
-                    {category}
-                </span>
-                <span className="scenario__title">{title}</span>
-                <button
-                    onClick={handleButtonClick}
-                    className="scenario__toggle-btn"
-                    aria-label={isOpen ? "Свернуть описание" : "Развернуть описание"}
-                >
-                    <img
-                        src={isOpen ? arrowUp : arrowDown}
-                        alt={isOpen ? "Стрелка вверх, свернуть" : "Стрелка вниз, развернуть"}
-                        className="scenario__toggle-icon"
-                    />
-                </button>
-            </div>
-            {isOpen && (
-                <div className="scenario__expanded-content">
-                    <img
-                        src={image}
-                        alt={title}
-                        className="scenario__expanded-image"
-                    />
-                    <div className="scenario__expanded-side">
-                        <div className="scenario__notification">
-                            <div className="scenario__notification-icon-wrapper">
-                                <img 
-                                    src={notificationIcon} 
-                                    alt="Иконка уведомления" 
-                                    className="scenario__notification-icon" 
-                                />
-                            </div>
-                            <div className="scenario__notification-text">
-                                <span className="scenario__notification-title">Голосовое оповещение</span>
-                                <p className="scenario__notification-subtitle">{notlification}</p>
-                            </div>
-                        </div>
-                        <div className="scenario__cause">
-                            <div className="scenario__cause-text">
-                                <span className="scenario__cause-title">Причина срабатывания</span>
-                                <p className="scenario__cause-subtitle">{cause}</p>
-                            </div>
-                        </div>
-                    </div>
+          <span className={`scenario__badge ${category === 'ТКРС' ? 'scenario__badge--tkrs' : ''}`}>{category}</span>
+          <span className="scenario__title">{title}</span>
+          <span className="scenario__toggle" aria-hidden="true">{isOpen ? '−' : '+'}</span>
+        </button>
+      </h3>
+      <div id={panelId} aria-labelledby={triggerId} role="region" hidden={!isOpen}>
+        {isOpen && (
+          <div className="scenario__details">
+            <figure className="scenario__figure">
+              <img src={image} alt={`Иллюстрация сценария: ${title}`} loading="lazy" decoding="async" />
+              <figcaption>Пример ситуации, распознаваемой системой</figcaption>
+            </figure>
+            <div className="scenario__explanation">
+              <div className="scenario__notification">
+                <div className="scenario__notification-heading">
+                  <span className="scenario__notification-icon"><img src={notificationIcon} alt="" width="22" height="22" /></span>
+                  <h3>Голосовое оповещение</h3>
                 </div>
-            )}
-        </div>
-    );
-};
+                <p>{notification}</p>
+              </div>
+              <div className="scenario__cause">
+                <h3>Причина срабатывания</h3>
+                <p>{cause}</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </article>
+  );
+}
 
 export default Scenario;

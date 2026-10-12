@@ -1,40 +1,32 @@
-import heroPicture from "../../assets/images/hero-picture.png";
-import heroArrow from "../../assets/images/hero-arrow.svg";
-import "./Hero.css";
+import heroPicture from '../../assets/images/hero-picture.png';
+import './Hero.css';
 
-const Hero = () => {
-    return (
-        <section className="hero">
-            <div className="hero__content">
-                <h1 className="hero__title">
-                    Умная камера <span className="hero__title-accent"> поможет вам </span> в работе
-                </h1>
-                <p className="hero__description">
-                    На объектах появился новый помощник — системы видеоаналитики производства работ, использующие технологии искусственного интеллекта. Их цель — повысить вашу безопасность.
-                </p>
-                <a
-                    href="#how-it-works"
-                    className="hero__button"
-                >
-                    Как это работает?
-                    <img
-                        src={heroArrow}
-                        alt="Стрелка-указатель"
-                        className="hero__button-icon"
-                    />
-                </a>
-            </div>
-            <div className="hero__media">
-                <div className="hero__media-wrapper">
-                    <img
-                        src={heroPicture}
-                        alt="Умная камера видеоаналитики на объекте"
-                        className="hero__media-image"
-                    />
-                </div>
-            </div>
-        </section>
-    );
+function Hero() {
+  return (
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="hero__inner container">
+        <div className="hero__content">
+          <span className="eyebrow">Видеоаналитика производства работ</span>
+          <h1 id="hero-title" className="hero__title">
+            Умная камера.<br /><span>Безопасная работа.</span>
+          </h1>
+          <p className="hero__description">
+            Ещё один помощник на производстве. Искусственный интеллект замечает
+            опасные ситуации и предупреждает о них, чтобы вы могли вовремя среагировать.
+          </p>
+          <div className="hero__actions">
+            <a className="hero__button" href="#scenarios">Посмотреть сценарии <span aria-hidden="true">↗</span></a>
+            <a className="hero__link" href="#how-it-works">Как это работает <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div className="hero__media">
+          <span className="hero__media-label">Технологии на стороне безопасности</span>
+          <img src={heroPicture} alt="Иллюстрация работника и камеры на производственном объекте" width="666" height="443" fetchPriority="high" />
+          <p className="hero__media-caption">Фиксирует. Анализирует. Предупреждает.</p>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Hero;
